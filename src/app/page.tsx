@@ -7,7 +7,7 @@ export default function Home() {
       name="LucyQ"
       username="Lucyqbcn"
       created="10h"
-      text="For people that code 10+ hours daily, what’s your secret? Genuinely asking, as Iwish to get to that level as well."
+      text="For people that code 10+ hours daily, what’s your secret? Genuinely asking, as I wish to get to that level as well."
       replies={2}
       retweets={20}
       likes={4}

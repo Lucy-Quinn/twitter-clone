@@ -22,14 +22,14 @@ const customViewports = {
 };
 const preview: Preview = {
   parameters: {
-    // backgrounds: {
-    //   default: '#808080',
-    //   values: [
-    //     { name: 'light', value: '#ffffff' },
-    //     { name: 'gray', value: '#808080' },
-    //     { name: 'dark', value: '#212b31' },
-    //   ],
-    // },
+    backgrounds: {
+      default: '#ffffff',
+      values: [
+        { name: 'light', value: '#ffffff' },
+        { name: 'dim', value: '#15202b' },
+        { name: 'dark', value: '#080808' },
+      ],
+    },
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {
