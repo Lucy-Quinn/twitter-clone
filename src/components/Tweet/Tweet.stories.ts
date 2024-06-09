@@ -16,14 +16,12 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Primary: Story = {
   args: {
-    img_slug: 'icons/user.svg',
+    img_slug: '/icons/user.svg',
     name: 'LucyQ',
     username: 'Lucyqbcn',
     created: 'Jun 8',
-    text: 'For people that code 10+ hours daily, what’s your secret? Genuinely asking, as I wish to get to that level as well.',
-    replies: 410,
-    retweets: 204,
-    likes: 36,
+    content:
+      'For people that code 10+ hours daily, what’s your secret? Genuinely asking, as I wish to get to that level as well.',
     views: 29,
   },
 };
