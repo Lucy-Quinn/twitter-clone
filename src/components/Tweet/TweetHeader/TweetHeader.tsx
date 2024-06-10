@@ -1,5 +1,6 @@
 import Image from 'next/image';
-import { TweetProps } from '../Tweet';
+import { TweetProps } from '@/components/Tweet';
+import { TweetAction } from '../TweetActions/TweetAction';
 
 type TweetHeaderProps = Pick<
   TweetProps,
@@ -28,7 +29,6 @@ export const TweetHeader = ({
           <a href={`https://twitter.com/${username}`}>
             <div className="flex gap-1 items-center">
               <h3 className="font-bold">{name}</h3>
-
               <Image
                 src="/icons/verified.webp"
                 width={20}
@@ -45,9 +45,7 @@ export const TweetHeader = ({
             <div>{created}</div>
           </div>
         </div>
-        <div>
-          <Image src="/icons/more.svg" alt="More" width={24} height={24} />
-        </div>
+        <TweetAction name="more" />
       </div>
     </div>
   );

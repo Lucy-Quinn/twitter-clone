@@ -1,34 +1,40 @@
-import Image from 'next/image';
-import cn from 'classnames';
+import clsx from 'clsx/lite';
+import icons from '@/components/icons';
+import { capitaliseFirstLetter } from '@/utils/capitalise-first-letter';
 
 type TweetActionProps = {
   count?: number;
-  src: string;
-  label: string;
+  name: string;
   classes?: string;
   onClick?: () => void;
+  color?: string;
 };
 
 export const TweetAction = ({
   count,
-  src,
-  label,
+  name,
   classes,
   onClick,
+  color = 'twitterBlue',
 }: TweetActionProps) => {
+  const label = capitaliseFirstLetter(name);
+  //@ts-ignore
+  const IconComponent = icons[name];
+
   return (
-    <div className={cn('group relative', classes)} onClick={onClick}>
-      <p className="opacity-0 absolute group-hover:opacity-100 group-hover:p-1 group-hover:bg-[#5A5E61] group-hover:top-6 group-hover:-left-2 group-hover:rounded group-hover:text-primary">
+    <div className={clsx('group relative', classes)} onClick={onClick}>
+      <div className="relative text-secondary">
+        <div
+          className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-10 transition duration-300 bg-${color} p-[17px] -top-[7px] -left-[7px]`}
+        ></div>
+        <IconComponent className={`w-5 h-5 group-hover:text-${color}`} />
+      </div>
+      <p className={`group-hover:text-${color} transition duration-300`}>
+        {count}
+      </p>
+      <p className="opacity-0 absolute group-hover:opacity-100 group-hover:p-1 group-hover:bg-[#5A5E61] group-hover:top-8 group-hover:-left-2 group-hover:rounded group-hover:text-primary">
         {label}
       </p>
-      <Image
-        src={src}
-        alt={label}
-        width={20}
-        height={24}
-        className="group-hover:bg-twitterBlue group-hover:opacity-15"
-      />
-      <p className="group-hover:text-twitterBlue">{count}</p>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 'use client';
 
 import { TweetAction } from './TweetAction';
-import { TweetProps } from '../Tweet';
+import { TweetProps } from '@/components/Tweet';
 import { useState } from 'react';
 
 type TweetActionsProps = Pick<TweetProps, 'views'>;
@@ -18,33 +18,27 @@ export const TweetActions = ({ views }: TweetActionsProps) => {
     <div className="flex justify-between text-secondary mt-3 max-w-[600px] text-xs [&>div]:inline-flex [&>div]:gap-1 [&>div]:items-center">
       <TweetAction
         count={replies}
-        src="/icons/reply.svg"
-        label="Reply"
+        name="reply"
         classes="grow"
         onClick={handleReply}
       />
       <TweetAction
         count={reposts}
-        src="/icons/repost.svg"
-        label="Repost"
+        name="repost"
         classes="grow"
         onClick={handleRepost}
+        color="twitterGreen"
       />
       <TweetAction
         count={likes}
-        src="/icons/like.svg"
-        label="Like"
+        name="like"
         classes="grow"
         onClick={handleLike}
+        color="twitterPink"
       />
-      <TweetAction
-        count={views}
-        src="/icons/view.svg"
-        label="View"
-        classes="grow"
-      />
-      <TweetAction src="/icons/bookmark.svg" label="Bookmark" classes="mr-2" />
-      <TweetAction src="/icons/share.svg" label="Share" />
+      <TweetAction count={views} name="view" classes="grow" />
+      <TweetAction name="bookmark" classes="mr-2" />
+      <TweetAction name="share" />
     </div>
   );
 };
