@@ -1,14 +1,26 @@
 import { Tweet } from '@/components/Tweet';
+import { type TweetData } from 'types';
 
-export default function Home() {
+export default async function Home() {
+  const response = await fetch('http://localhost:3500/posts', {
+    cache: 'no-store',
+  });
+  const posts = await response.json();
+
+  if (!posts.length) {
+    return <h1>No posts to display</h1>;
+  }
+
   return (
-    <Tweet
-      img_slug="/icons/user.jpg"
-      name="LucyQ"
-      username="Lucyqbcn"
-      created="10h"
-      content="For people that code 10+ hours daily, what’s your secret? Genuinely asking, as I wish to get to that level as well."
-      views={54}
-    />
+    <>
+      {posts.map(
+        ({ img_slug, name, username, created, content, views }: TweetData) => (
+          <Tweet
+            key={username}
+            {...{ img_slug, name, username, created, content, views }}
+          />
+        ),
+      )}
+    </>
   );
 }

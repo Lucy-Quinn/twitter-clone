@@ -1,13 +1,7 @@
+import { TweetData } from 'types';
 import { TweetActions } from './TweetActions';
 import { TweetHeader } from './TweetHeader';
-export type TweetProps = {
-  img_slug: string;
-  name: string;
-  username: string;
-  created: string;
-  content: string;
-  views: number;
-};
+import { TweetUserIcon } from './TweetUserIcon';
 
 export const Tweet = ({
   img_slug,
@@ -16,18 +10,16 @@ export const Tweet = ({
   created,
   content,
   views,
-}: TweetProps) => {
+}: TweetData) => {
   return (
     <article className="p-4 max-w-[598px]">
-      <div className="flex flex-col">
-        <TweetHeader
-          img_slug={img_slug}
-          name={name}
-          username={username}
-          created={created}
-        />
-        <div>{content}</div>
-        <TweetActions views={views} />
+      <div className="flex">
+        <TweetUserIcon {...{ img_slug }} />
+        <div className="flex flex-col w-full">
+          <TweetHeader {...{ img_slug, name, username, created }} />
+          <p>{content}</p>
+          <TweetActions {...{ views }} />
+        </div>
       </div>
     </article>
   );
