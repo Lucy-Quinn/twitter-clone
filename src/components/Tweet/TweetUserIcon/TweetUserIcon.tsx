@@ -1,12 +1,14 @@
 import Image from 'next/image';
+import clsx from 'clsx/lite';
 
 type TweetUserIconProps = {
   img_slug: string;
+  classes?: string;
 };
 
-export const TweetUserIcon = ({ img_slug }: TweetUserIconProps) => {
+export const TweetUserIcon = ({ img_slug, classes }: TweetUserIconProps) => {
   return (
-    <div className="h-auto mr-2">
+    <div className={clsx('h-auto', classes)}>
       <Image
         src={img_slug}
         width={40}

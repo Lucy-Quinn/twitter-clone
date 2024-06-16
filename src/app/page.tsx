@@ -1,26 +1,21 @@
-import { Tweet } from '@/components/Tweet';
-import { type TweetData } from 'types';
+'use client';
+import { ReplyModal } from '@/components/Modals';
+import { useRouter } from 'next/navigation';
+import { Tweet } from '../components';
 
-export default async function Home() {
-  const response = await fetch('http://localhost:3500/posts', {
-    cache: 'no-store',
-  });
-  const posts = await response.json();
-
-  if (!posts.length) {
-    return <h1>No posts to display</h1>;
-  }
+export default async function RootHome() {
+  const router = useRouter();
+  const handleOnClick = () => {
+    router.push('/home');
+  };
 
   return (
     <>
-      {posts.map(
-        ({ img_slug, name, username, created, content, views }: TweetData) => (
-          <Tweet
-            key={username}
-            {...{ img_slug, name, username, created, content, views }}
-          />
-        ),
-      )}
+      {/* <button className="w-20 h-20 bg-twitterBlue" onClick={handleOnClick}>
+        Go to homepage
+      </button> */}
+
+      <ReplyModal />
     </>
   );
 }

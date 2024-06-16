@@ -8,7 +8,9 @@
   --foreground-dark: #080808;
   --text-primary: #263340;
   --text-secondary: #71767b;
-  --font-size-primary: 15px;
+  --text-white: #fff;
+  --twitter-blue: #1da1f2;
+  --font-size: 15px;
   /* --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255; */
 }
@@ -25,6 +27,20 @@ body {
   color: var(--text-primary);
   font-size: var(--font-size);
   background-color: var(--foreground-default);
+  line-height: 20px;
+}
+
+.button {
+  background-color: var(--twitter-blue);
+  opacity: 0.5;
+  color: var(--text-white);
+  font-weight: 700;
+  border-radius: 9999px;
+}
+
+.transparent-button {
+  color: var(--twitter-blue);
+  font-weight: 700;
 }
 
 @layer utilities {
