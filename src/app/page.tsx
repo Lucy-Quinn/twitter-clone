@@ -3,7 +3,7 @@ import { ReplyModal } from '@/components/Modals';
 import { useRouter } from 'next/navigation';
 import { Tweet } from '../components';
 
-export default async function RootHome() {
+export default function RootHome() {
   const router = useRouter();
   const handleOnClick = () => {
     router.push('/home');
@@ -11,9 +11,9 @@ export default async function RootHome() {
 
   return (
     <>
-      {/* <button className="w-20 h-20 bg-twitterBlue" onClick={handleOnClick}>
+      <button className="w-20 h-20 bg-twitterBlue" onClick={handleOnClick}>
         Go to homepage
-      </button> */}
+      </button>
 
       <ReplyModal />
     </>

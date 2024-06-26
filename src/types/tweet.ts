@@ -5,5 +5,5 @@ export type TweetData = {
   username: string;
   created: string;
   content: string;
-  views: number;
+  views?: number;
 };
