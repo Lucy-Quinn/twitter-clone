@@ -32,10 +32,14 @@ body {
 
 .button {
   background-color: var(--twitter-blue);
-  opacity: 0.5;
   color: var(--text-white);
   font-weight: 700;
   border-radius: 9999px;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .transparent-button {

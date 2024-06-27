@@ -15,7 +15,7 @@ export default function RootHome() {
         Go to homepage
       </button>
 
-      <ReplyModal />
+      {/* <ReplyModal /> */}
     </>
   );
 }
