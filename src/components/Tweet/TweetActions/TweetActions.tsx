@@ -17,7 +17,7 @@ export const TweetActions = ({ views }: TweetActionsProps) => {
   const handleRepost = () => setReposts(reposts + 1);
   const handleReply = () => {
     setReplies(replies + 1);
-    router.push('/compose/post');
+    router.push('/reply/1/');
   };
   return (
     <div className="flex justify-between text-secondary mt-3 max-w-[600px] text-xs [&>div]:inline-flex [&>div]:gap-1 [&>div]:items-center">

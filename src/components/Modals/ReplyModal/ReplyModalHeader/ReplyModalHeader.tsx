@@ -18,7 +18,7 @@ export const ReplyModalHeader = ({
 
   return (
     <div className="flex justify-between items-center h-[53px]">
-      <TweetAction name="backArrow" />
+      <TweetAction name="backArrow" onClick={handleClose} />
 
       <div className="flex gap-3 [&>*]:px-4 [&>*]:text-sm [&>*]:min-h-8">
         <button className="transparent-button">Drafts</button>
