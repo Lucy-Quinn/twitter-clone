@@ -5,7 +5,7 @@ import { TweetData } from 'types';
 export type TweetHeaderProps = Pick<
   TweetData,
   'name' | 'username' | 'created'
-> & { isModal?: boolean };
+> & { isModal?: boolean; isReply?: boolean };
 
 export const TweetHeader = ({
   name,

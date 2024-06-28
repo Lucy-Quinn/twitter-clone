@@ -22,6 +22,9 @@ const customViewports = {
 };
 const preview: Preview = {
   parameters: {
+    nextjs: {
+      appDirectory: true,
+    },
     backgrounds: {
       default: '#ffffff',
       values: [

@@ -22,11 +22,14 @@ export const Tweet = ({
     >
       <div className="flex">
         <div className="flex flex-col items-center mr-2">
-          <TweetUserIcon {...{ img_slug }} classes="" />
+          <TweetUserIcon {...{ img_slug }} />
           {isReply && <div className="bg-[#cfd9de] w-[2px] h-full mt-1" />}
         </div>
         <div className="flex flex-col w-full mr-2">
-          <TweetHeader {...{ img_slug, name, username, created }} />
+          <TweetHeader
+            {...{ img_slug, name, username, created }}
+            isModal={true}
+          />
           <p className="mt-1">{content}</p>
           {isReply && (
             <p className="mt-3 mb-4 text-secondary">

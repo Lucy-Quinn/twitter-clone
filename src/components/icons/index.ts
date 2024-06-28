@@ -5,6 +5,7 @@ import { View } from './View';
 import { Bookmark } from './Bookmark';
 import { Share } from './Share';
 import { More } from './More';
+import { BackArrow } from './BackArrow';
 
 const icons = {
   reply: Reply,
@@ -14,6 +15,7 @@ const icons = {
   bookmark: Bookmark,
   share: Share,
   more: More,
+  backArrow: BackArrow,
 };
 
 export default icons;

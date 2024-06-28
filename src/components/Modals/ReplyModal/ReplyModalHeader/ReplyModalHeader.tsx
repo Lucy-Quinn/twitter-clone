@@ -1,3 +1,4 @@
+import { TweetAction } from '@/components/Tweet/TweetActions/TweetAction';
 import { useRouter } from 'next/navigation';
 
 type ReplyModalHeaderProps = {
@@ -16,8 +17,9 @@ export const ReplyModalHeader = ({
   };
 
   return (
-    <div className="flex justify-between h-[53px]">
-      <button onClick={handleClose}>X</button>
+    <div className="flex justify-between items-center h-[53px]">
+      <TweetAction name="backArrow" />
+
       <div className="flex gap-3 [&>*]:px-4 [&>*]:text-sm [&>*]:min-h-8">
         <button className="transparent-button">Drafts</button>
         <button
