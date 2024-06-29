@@ -3,8 +3,12 @@ import { useEffect, useState } from 'react';
 import { Tweet as OriginalTweet } from '@/components/Tweet';
 import { ReplyModalHeader } from './ReplyModalHeader';
 import { UserResponse } from './UserResponse';
+import { GETTWEETBYID } from 'app/api';
+import { TweetData } from 'types';
 
-export const ReplyModal = () => {
+type ReplyModalProps = Pick<TweetData, 'tweetId'>;
+
+export const ReplyModal = ({ tweetId }: ReplyModalProps) => {
   const [data, setData] = useState(null);
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
@@ -19,19 +23,15 @@ export const ReplyModal = () => {
   const { name, username, img_slug, content, created } = data ?? defaultData;
 
   useEffect(() => {
-    async function fetchData() {
+    async function fetchTweetById() {
       try {
-        const responseData = await fetch('http://localhost:3500/posts', {
-          cache: 'no-store',
-        });
-        const data = await responseData.json();
-
-        setData(data[0]);
+        const responseData = await GETTWEETBYID({ tweetId });
+        setData(responseData);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     }
-    fetchData();
+    fetchTweetById();
   }, []);
 
   const handleReplySubmit = (event: React.MouseEvent<HTMLButtonElement>) => {

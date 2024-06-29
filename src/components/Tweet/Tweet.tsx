@@ -6,6 +6,7 @@ import clsx from 'clsx';
 
 type TweetDataProps = TweetData & { isReply?: boolean };
 export const Tweet = ({
+  tweetId,
   img_slug,
   name,
   username,
@@ -36,7 +37,7 @@ export const Tweet = ({
               Replying to <span className="text-twitterBlue">@{username}</span>
             </p>
           )}
-          {!isReply && <TweetActions {...{ views }} />}
+          {!isReply && <TweetActions {...{ tweetId, views }} />}
         </div>
       </div>
     </article>

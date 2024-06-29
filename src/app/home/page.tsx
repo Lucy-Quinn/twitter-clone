@@ -14,10 +14,18 @@ export default async function Home() {
   return (
     <>
       {posts.map(
-        ({ img_slug, name, username, created, content, views }: TweetData) => (
+        ({
+          tweetId,
+          img_slug,
+          name,
+          username,
+          created,
+          content,
+          views,
+        }: TweetData) => (
           <Tweet
-            key={username}
-            {...{ img_slug, name, username, created, content, views }}
+            key={tweetId}
+            {...{ tweetId, img_slug, name, username, created, content, views }}
           />
         ),
       )}

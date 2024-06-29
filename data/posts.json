@@ -1,7 +1,7 @@
 {
   "posts": [
     {
-      "id": 1,
+      "tweetId": 1,
       "img_slug": "/icons/user.jpg",
       "name": "LucyQ",
       "username": "Lucyqbcn",
@@ -10,7 +10,7 @@
       "views": 54
     },
     {
-      "id": 2,
+      "tweetId": 2,
       "img_slug": "/icons/user.jpg",
       "name": "NickQ",
       "username": "Noodle",
@@ -19,7 +19,7 @@
       "views": 54
     },
     {
-      "id": 3,
+      "tweetId": 3,
       "img_slug": "/icons/user.jpg",
       "name": "TomQ",
       "username": "Tomplom",
