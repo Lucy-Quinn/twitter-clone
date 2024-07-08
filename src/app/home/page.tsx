@@ -12,7 +12,7 @@ export default async function Home() {
   }
 
   return (
-    <>
+    <div className="max-w-[600px] flex flex-col items-center justify-center m-auto">
       {posts.map(
         ({
           tweetId,
@@ -29,6 +29,6 @@ export default async function Home() {
           />
         ),
       )}
-    </>
+    </div>
   );
 }

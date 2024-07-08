@@ -46,20 +46,22 @@ export const ReplyModal = ({ tweetId }: ReplyModalProps) => {
   return (
     data && (
       <>
-        <div className="top-0 fixed bottom-0 right-0 opacity-40" />
-        <div className="max-h-[90vh] rounded-2xl px-4 pb-2 md:min-w-[600px] md:max-w-[80vh]">
-          <ReplyModalHeader
-            onReply={handleReplySubmit}
-            isButtonDisabled={isButtonDisabled}
-          />
-          <div className="flex flex-col pt-4">
-            <OriginalTweet
-              {...{ img_slug, name, username, created, content }}
-              isReply={true}
+        <dialog className="fixed left-0 top-0 w-full h-full bg-[black] bg-opacity-50 z-50 overflow-auto flex justify-center items-center max-w-[600px]">
+          <div className="bg-[#fff] p-3 m-8 rounded-2xl">
+            <ReplyModalHeader
+              onReply={handleReplySubmit}
+              isButtonDisabled={isButtonDisabled}
             />
-            <UserResponse handleReplyChange={handleReplyChange} />
+            <div className="flex flex-col pt-4">
+              <OriginalTweet
+                {...{ img_slug, name, username, created, content }}
+                isReply={true}
+              />
+              <UserResponse handleReplyChange={handleReplyChange} />
+            </div>
           </div>
-        </div>
+        </dialog>
+        <div className="top-0 fixed bottom-0 right-0 left-0" />
       </>
     )
   );

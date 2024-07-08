@@ -17,7 +17,7 @@ export const Tweet = ({
 }: TweetDataProps) => {
   return (
     <article
-      className={clsx('max-w-[598px]', {
+      className={clsx('w-full', {
         'p-4': !isReply,
       })}
     >
@@ -33,7 +33,7 @@ export const Tweet = ({
           />
           <p className="mt-1">{content}</p>
           {isReply && (
-            <p className="mt-3 mb-4 text-secondary">
+            <p className="mt-3 mb-4 text-fontGrey">
               Replying to <span className="text-twitterBlue">@{username}</span>
             </p>
           )}

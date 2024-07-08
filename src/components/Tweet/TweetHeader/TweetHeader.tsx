@@ -28,7 +28,7 @@ export const TweetHeader = ({
               />
             </div>
           </a>
-          <div className="flex gap-1 text-secondary">
+          <div className="flex gap-1 text-fontGrey">
             <a href={`https://twitter.com/${username}`}>
               <div className="">{`@${username}`}</div>
             </a>

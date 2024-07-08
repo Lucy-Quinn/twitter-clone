@@ -20,7 +20,7 @@ export const TweetActions = ({ tweetId, views }: TweetActionsProps) => {
     router.push(`reply/${tweetId}`);
   };
   return (
-    <div className="flex justify-between text-secondary mt-3 max-w-[600px] text-xs [&>div]:inline-flex [&>div]:gap-1 [&>div]:items-center">
+    <div className="flex justify-between text-fontGrey mt-3 max-w-[600px] text-xs [&>div]:inline-flex [&>div]:gap-1 [&>div]:items-center">
       <TweetAction
         count={replies}
         name="reply"
