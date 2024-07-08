@@ -12,15 +12,23 @@ export default async function Home() {
   }
 
   return (
-    <>
+    <div className="max-w-[600px] flex flex-col items-center justify-center m-auto">
       {posts.map(
-        ({ img_slug, name, username, created, content, views }: TweetData) => (
+        ({
+          tweetId,
+          img_slug,
+          name,
+          username,
+          created,
+          content,
+          views,
+        }: TweetData) => (
           <Tweet
-            key={username}
-            {...{ img_slug, name, username, created, content, views }}
+            key={tweetId}
+            {...{ tweetId, img_slug, name, username, created, content, views }}
           />
         ),
       )}
-    </>
+    </div>
   );
 }

@@ -5,9 +5,9 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { TweetData } from 'types';
 
-type TweetActionsProps = Pick<TweetData, 'views'>;
+type TweetActionsProps = Pick<TweetData, 'views' | 'tweetId'>;
 
-export const TweetActions = ({ views }: TweetActionsProps) => {
+export const TweetActions = ({ tweetId, views }: TweetActionsProps) => {
   const [likes, setLikes] = useState(0);
   const [reposts, setReposts] = useState(0);
   const [replies, setReplies] = useState(0);
@@ -17,10 +17,10 @@ export const TweetActions = ({ views }: TweetActionsProps) => {
   const handleRepost = () => setReposts(reposts + 1);
   const handleReply = () => {
     setReplies(replies + 1);
-    router.push('/compose/post');
+    router.push(`reply/${tweetId}`);
   };
   return (
-    <div className="flex justify-between text-secondary mt-3 max-w-[600px] text-xs [&>div]:inline-flex [&>div]:gap-1 [&>div]:items-center">
+    <div className="flex justify-between text-fontGrey mt-3 max-w-[600px] text-xs [&>div]:inline-flex [&>div]:gap-1 [&>div]:items-center">
       <TweetAction
         count={replies}
         name="reply"

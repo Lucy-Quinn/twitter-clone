@@ -18,15 +18,18 @@ export const UserResponse = ({ handleReplyChange }: UserResponseProps) => {
     <div className="flex">
       <TweetUserIcon img_slug="/icons/user.jpg" classes="mt-3 mr-2" />
       <textarea
-        className="mt-3 text-xl leading-6 outline-none"
+        className="mt-3 text-xl leading-6 outline-none resize-none pt-[7px] placeholder-fontBlack placeholder-opacity-75"
         value={replyMessage}
         onChange={handleOnChange}
+        rows={5}
+        cols={15}
         placeholder="Post your reply"
         autoCapitalize="sentences"
         autoComplete="on"
         autoCorrect="on"
         spellCheck="true"
         aria-label="Post text"
+        resize-none
       />
     </div>
   );

@@ -3,8 +3,12 @@ import { useEffect, useState } from 'react';
 import { Tweet as OriginalTweet } from '@/components/Tweet';
 import { ReplyModalHeader } from './ReplyModalHeader';
 import { UserResponse } from './UserResponse';
+import { GETTWEETBYID } from 'app/api';
+import { TweetData } from 'types';
 
-export const ReplyModal = () => {
+type ReplyModalProps = Pick<TweetData, 'tweetId'>;
+
+export const ReplyModal = ({ tweetId }: ReplyModalProps) => {
   const [data, setData] = useState(null);
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
@@ -19,19 +23,15 @@ export const ReplyModal = () => {
   const { name, username, img_slug, content, created } = data ?? defaultData;
 
   useEffect(() => {
-    async function fetchData() {
+    async function fetchTweetById() {
       try {
-        const responseData = await fetch('http://localhost:3500/posts', {
-          cache: 'no-store',
-        });
-        const data = await responseData.json();
-
-        setData(data[0]);
+        const responseData = await GETTWEETBYID({ tweetId });
+        setData(responseData);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     }
-    fetchData();
+    fetchTweetById();
   }, []);
 
   const handleReplySubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -46,20 +46,22 @@ export const ReplyModal = () => {
   return (
     data && (
       <>
-        <div className="top-0 fixed bottom-0 right-0 opacity-40" />
-        <div className="max-h-[90vh] rounded-2xl px-4 pb-2 md:min-w-[600px] md:max-w-[80vh]">
-          <ReplyModalHeader
-            onReply={handleReplySubmit}
-            isButtonDisabled={isButtonDisabled}
-          />
-          <div className="flex flex-col pt-4">
-            <OriginalTweet
-              {...{ img_slug, name, username, created, content }}
-              isReply={true}
+        <dialog className="fixed left-0 top-0 w-full h-full bg-[black] bg-opacity-50 z-50 overflow-auto flex justify-center items-center max-w-[600px]">
+          <div className="bg-[#fff] p-3 m-8 rounded-2xl">
+            <ReplyModalHeader
+              onReply={handleReplySubmit}
+              isButtonDisabled={isButtonDisabled}
             />
-            <UserResponse handleReplyChange={handleReplyChange} />
+            <div className="flex flex-col pt-4">
+              <OriginalTweet
+                {...{ img_slug, name, username, created, content }}
+                isReply={true}
+              />
+              <UserResponse handleReplyChange={handleReplyChange} />
+            </div>
           </div>
-        </div>
+        </dialog>
+        <div className="top-0 fixed bottom-0 right-0 left-0" />
       </>
     )
   );
