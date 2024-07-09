@@ -39,6 +39,7 @@ module.exports = {
     'text-twitterGreen',
     'group-hover:text-twitterGreen',
     'bg-twitterGreen',
+    'bg-fontGrey',
   ],
   plugins: [],
 };

@@ -23,27 +23,27 @@ export const TweetActions = ({ tweetId, views }: TweetActionsProps) => {
     <div className="flex justify-between text-fontGrey mt-3 max-w-[600px] text-xs [&>div]:inline-flex [&>div]:gap-1 [&>div]:items-center">
       <TweetAction
         count={replies}
-        name="reply"
+        name="Reply"
         classes="grow"
         onClick={handleReply}
       />
       <TweetAction
         count={reposts}
-        name="repost"
+        name="Repost"
         classes="grow"
         onClick={handleRepost}
         color="twitterGreen"
       />
       <TweetAction
         count={likes}
-        name="like"
+        name="Like"
         classes="grow"
         onClick={handleLike}
         color="twitterPink"
       />
-      <TweetAction count={views} name="view" classes="grow" />
-      <TweetAction name="bookmark" classes="mr-2" />
-      <TweetAction name="share" />
+      <TweetAction count={views} name="View" classes="grow" />
+      <TweetAction name="Bookmark" classes="mr-2" />
+      <TweetAction name="Share" />
     </div>
   );
 };

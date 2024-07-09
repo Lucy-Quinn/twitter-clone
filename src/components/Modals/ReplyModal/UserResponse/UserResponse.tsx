@@ -18,7 +18,7 @@ export const UserResponse = ({ handleReplyChange }: UserResponseProps) => {
     <div className="flex">
       <TweetUserIcon img_slug="/icons/user.jpg" classes="mt-3 mr-2" />
       <textarea
-        className="mt-3 text-xl leading-6 outline-none resize-none pt-[7px] placeholder-fontBlack placeholder-opacity-75"
+        className="mt-3 text-xl leading-6 outline-none resize-none pt-[7px] placeholder-fontBlack placeholder-opacity-[0.73]"
         value={replyMessage}
         onChange={handleOnChange}
         rows={5}

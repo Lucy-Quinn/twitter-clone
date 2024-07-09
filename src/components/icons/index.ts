@@ -6,16 +6,18 @@ import { Bookmark } from './Bookmark';
 import { Share } from './Share';
 import { More } from './More';
 import { BackArrow } from './BackArrow';
+import { Close } from './Close';
 
 const icons = {
-  reply: Reply,
-  like: Like,
-  repost: Repost,
-  view: View,
-  bookmark: Bookmark,
-  share: Share,
-  more: More,
-  backArrow: BackArrow,
+  Reply,
+  Like,
+  Repost,
+  View,
+  Bookmark,
+  Share,
+  More,
+  BackArrow,
+  Close,
 };
 
 export default icons;
