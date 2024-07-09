@@ -33,7 +33,6 @@ body {
 }
 
 .button {
-  background-color: var(--twitter-blue);
   color: var(--text-white);
   font-weight: 700;
   border-radius: 9999px;
