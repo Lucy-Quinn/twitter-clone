@@ -1,5 +1,8 @@
+'use client';
+
 import clsx from 'clsx/lite';
 import icons from '@/components/icons';
+import useDeviceType, { DeviceType } from '@/hooks/useDeviceType';
 
 type TweetActionProps = {
   count?: number;
@@ -18,6 +21,7 @@ export const TweetAction = ({
 }: TweetActionProps) => {
   //@ts-ignore
   const IconComponent = icons[name];
+  const deviceType = useDeviceType();
 
   return (
     <div className={clsx('group relative text-xs', classes)}>
@@ -28,13 +32,17 @@ export const TweetAction = ({
           ></div>
           <IconComponent className={`w-5 h-5 group-hover:text-${color}`} />
         </div>
-        <p className={`group-hover:text-${color} transition duration-300`}>
-          {count}
-        </p>
+        {count && (
+          <p className={`group-hover:text-${color} transition duration-300`}>
+            {count}
+          </p>
+        )}
       </button>
-      <p className="opacity-0 absolute group-hover:opacity-100 group-hover:p-[3px] group-hover:bg-[#5A5E61] group-hover:top-7 group-hover:-left-2 group-hover:rounded group-hover:text-fontWhite">
-        {name}
-      </p>
+      {deviceType === DeviceType.desktop && (
+        <p className="hidden absolute group-hover:block group-hover:p-[3px] group-hover:bg-[#5A5E61] group-hover:top-7 group-hover:-left-2 group-hover:rounded group-hover:text-fontWhite">
+          {name}
+        </p>
+      )}
     </div>
   );
 };

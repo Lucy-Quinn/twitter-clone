@@ -10,7 +10,9 @@
   --text-secondary: #71767b;
   --text-white: #fff;
   --twitter-blue: #1da1f2;
-  --font-size: 15px;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-md: 15px;
   /* --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255; */
 }
@@ -25,7 +27,7 @@
 
 body {
   color: var(--text-primary);
-  font-size: var(--font-size);
+  font-size: var(--font-size-md);
   background-color: var(--foreground-default);
   line-height: 20px;
 }
@@ -45,6 +47,7 @@ body {
 .transparent-button {
   color: var(--twitter-blue);
   font-weight: 700;
+  font-size: var(--font-size-sm);
 }
 
 @layer utilities {
@@ -52,22 +55,3 @@ body {
     text-wrap: balance;
   }
 }
-
-/* 
-html[data-mode="dark"] {
-  @apply bg-slate-800 text-white;
-}
-
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-} */

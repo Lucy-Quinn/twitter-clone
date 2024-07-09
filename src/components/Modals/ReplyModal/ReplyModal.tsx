@@ -49,8 +49,8 @@ export const ReplyModal = ({ tweetId }: ReplyModalProps) => {
   return (
     data && (
       <>
-        <dialog className="fixed left-0 top-0 w-full h-full bg-[black] bg-opacity-50 z-50 overflow-auto flex justify-center items-center max-w-[600px]">
-          <div className="bg-[#fff] h-full p-3 lg:h-auto lg:m-8 lg:rounded-2xl">
+        <dialog className="left-0 top-0 w-full h-full bg-[black] bg-opacity-40 z-50 overflow-auto flex justify-center items-center">
+          <div className="fixed max-w-[600px] bg-[#fff] h-full p-4 md:h-auto lg:m-8 md:rounded-2xl">
             <ReplyModalHeader
               onReply={handleReplySubmit}
               isButtonDisabled={isButtonDisabled}
@@ -70,7 +70,6 @@ export const ReplyModal = ({ tweetId }: ReplyModalProps) => {
             />
           </div>
         </dialog>
-        <div className="top-0 fixed bottom-0 right-0 left-0" />
       </>
     )
   );
