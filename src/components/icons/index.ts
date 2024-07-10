@@ -7,8 +7,9 @@ import { Share } from './Share';
 import { More } from './More';
 import { BackArrow } from './BackArrow';
 import { Close } from './Close';
+export * from './Comment';
 
-const icons = {
+const actionIcons = {
   Reply,
   Like,
   Repost,
@@ -20,4 +21,4 @@ const icons = {
   Close,
 };
 
-export default icons;
+export default actionIcons;

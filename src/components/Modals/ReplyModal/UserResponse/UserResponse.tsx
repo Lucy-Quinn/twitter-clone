@@ -29,7 +29,6 @@ export const UserResponse = ({ handleReplyChange }: UserResponseProps) => {
         autoCorrect="on"
         spellCheck="true"
         aria-label="Post text"
-        resize-none
       />
     </div>
   );
