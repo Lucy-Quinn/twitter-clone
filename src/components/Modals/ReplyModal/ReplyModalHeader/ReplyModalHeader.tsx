@@ -19,26 +19,37 @@ export const ReplyModalHeader = ({
     router.back();
   };
 
+  const handleDrafts = () => {
+    router.push(`drafts`);
+  };
+
   return (
-    <div className="flex justify-between items-center h-[53px]">
-      {deviceType === DeviceType.desktop ? (
-        <>
-          <TweetAction name="Close" onClick={handleClose} color="fontGrey" />
-          <button className="transparent-button mr-8">Drafts</button>
-        </>
-      ) : (
+    <div className="flex justify-between items-center">
+      {deviceType === DeviceType.mobile ? (
         <>
           <TweetAction name="BackArrow" onClick={handleClose} />
           <div className="flex gap-3 [&>*]:px-4 [&>*]:text-sm [&>*]:min-h-8">
-            <button className="transparent-button">Drafts</button>
+            <button className="transparent-button" onClick={handleDrafts}>
+              Drafts
+            </button>
             <button
-              className="button my-[10px]"
+              className="button bg-twitterBlue my-[10px]"
               onClick={onReply}
               disabled={isButtonDisabled}
             >
               Reply
             </button>
           </div>
+        </>
+      ) : (
+        <>
+          <TweetAction name="Close" onClick={handleClose} color="fontGrey" />
+          <button
+            className="transparent-button lg:hover:bg-twitterBlue lg:hover:bg-opacity-15 lg:py-2 lg:px-4 lg:hover:rounded-full"
+            onClick={handleDrafts}
+          >
+            Drafts
+          </button>
         </>
       )}
     </div>

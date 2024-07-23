@@ -16,7 +16,7 @@ export const ReplyModalFooter = ({
       <div>reply actions</div>
       {deviceType !== DeviceType.mobile && (
         <button
-          className="button my-[10px]"
+          className="button bg-twitterBlue my-[10px]"
           onClick={onReply}
           disabled={isButtonDisabled}
         >

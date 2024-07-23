@@ -53,6 +53,7 @@ export const ReplyModal = ({ tweetId }: ReplyModalProps) => {
           <div className="fixed max-w-[600px] bg-[#fff] h-full p-4 md:h-auto lg:m-8 md:rounded-2xl">
             <ReplyModalHeader
               onReply={handleReplySubmit}
+              {...{ isButtonDisabled, deviceType }}
               isButtonDisabled={isButtonDisabled}
               deviceType={deviceType}
             />
