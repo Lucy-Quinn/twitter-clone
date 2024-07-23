@@ -2,7 +2,7 @@ import { Tweet } from '@/components/Tweet';
 import { type TweetData } from 'types';
 
 export default async function Home() {
-  const response = await fetch('http://localhost:3500/posts', {
+  const response = await fetch('http://localhost:3500/tweets', {
     cache: 'no-store',
   });
   const posts = await response.json();

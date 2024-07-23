@@ -1,0 +1,83 @@
+{
+  "tweets": [
+    {
+      "tweetId": 1,
+      "img_slug": "/icons/user.jpg",
+      "name": "LucyQ",
+      "username": "Lucyqbcn",
+      "created": "10h",
+      "content": "For people that code 10+ hours daily, whats your secret? Genuinely asking, as I wish to get to that level as well.",
+      "views": 54
+    },
+    {
+      "tweetId": 2,
+      "img_slug": "/icons/user.jpg",
+      "name": "NickQ",
+      "username": "Noodle",
+      "created": "24h",
+      "content": "UX/UI rules!",
+      "views": 54
+    },
+    {
+      "tweetId": 3,
+      "img_slug": "/icons/user.jpg",
+      "name": "TomQ",
+      "username": "Tomplom",
+      "created": "1h",
+      "content": "The best lawyer in town.",
+      "views": 54
+    }
+  ],
+  "unsentPosts": [
+    {
+      "unsentPostId": 1,
+      "authorId": 1,
+      "content": "Keep at it! Practise a little bit each day!",
+      "originalTweetName": "LucyQ",
+      "originalTweetUsername": "Lucyqbcn",
+      "originalTweetId": 1
+    },
+    {
+      "unsentPostId": 2,
+      "authorId": 1,
+      "content": "No coding rules! ;)",
+      "originalTweetName": "NickQ",
+      "originalTweetUsername": "Noodle",
+      "originalTweetId": 2
+    },
+    {
+      "unsentPostId": 3,
+      "authorId": 1,
+      "content": "I love UX/UI, but I prefer coding",
+      "originalTweetName": "NickQ",
+      "originalTweetUsername": "Noodle",
+      "originalTweetId": 2
+    }
+  ],
+  "scheduledPosts": [
+    {
+      "scheduledPostId": 1,
+      "authorId": 1,
+      "scheduledDate": "September",
+      "content": "Today is the day that I tell you what the secret is...",
+      "originalTweetUsername": "Lucyqbcn",
+      "originalTweetId": 1
+    },
+    {
+      "scheduledPostId": 2,
+      "authorId": 1,
+      "scheduledDate": "June",
+      "content": "Dream on ;)",
+      "originalTweetUsername": "Noodle",
+      "originalTweetId": 2
+    },
+    {
+      "scheduledPostId": 3,
+      "authorId": 1,
+      "scheduledDate": "November",
+      "content": "If it does explain why. More description needed.",
+      "originalTweetUsername": "Noodle",
+      "originalTweetId": 2
+    }
+  ]
+}

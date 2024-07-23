@@ -8,6 +8,7 @@ import { More } from './More';
 import { BackArrow } from './BackArrow';
 import { Close } from './Close';
 export * from './Comment';
+export * from './CalendarIcon';
 
 const actionIcons = {
   Reply,

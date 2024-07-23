@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { TabType } from '../DraftModal';
 import { splitStringIntoWords } from '@/utils/split-string-into-words';
 
-type DraftModalProps = {
+type DraftModalTabProps = {
   handleTab: (title: TabType) => void;
   isSelected: boolean;
   title: TabType;
@@ -11,7 +11,7 @@ export const DraftModalTab = ({
   handleTab,
   isSelected,
   title,
-}: DraftModalProps) => {
+}: DraftModalTabProps) => {
   const handleTabSelection = () => {
     handleTab(title);
   };
