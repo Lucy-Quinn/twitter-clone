@@ -1,19 +1,26 @@
 import { Tweet } from '@/components/Tweet';
+import { GET } from 'app/api';
 import { type TweetData } from 'types';
 
 export default async function Home() {
-  const response = await fetch('http://localhost:3500/tweets', {
-    cache: 'no-store',
-  });
-  const posts = await response.json();
+  const fetchAllTweets = async () => {
+    try {
+      const response = await GET();
+      return await response.json();
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
 
-  if (!posts.length) {
+  const tweets = await fetchAllTweets();
+
+  if (!tweets.length) {
     return <h1>No posts to display</h1>;
   }
 
   return (
     <div className="flex flex-col items-center justify-center m-auto">
-      {posts.map(
+      {tweets.map(
         ({
           tweetId,
           img_slug,

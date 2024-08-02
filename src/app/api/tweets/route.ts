@@ -1,4 +1,28 @@
 import { UnsentPostData, TweetData } from 'types';
+import { dbQuery } from '../../../../data/db';
+import { NextRequest, NextResponse } from 'next/server';
+
+export async function GET() {
+  try {
+    const query = `SELECT 
+        t.id, 
+        t.content, 
+        t.created_at, 
+        u.name,
+        u.username, 
+        u.profile_image_slug
+      FROM tweets t
+      JOIN users u ON t.user_id = u.id
+      ORDER BY t.created_at DESC`;
+
+    const tweets = await dbQuery(query);
+
+    return NextResponse.json(tweets.rows);
+  } catch (error) {
+    console.error('Error fetching tweets:', error);
+    return Response.json({ error: 'Internal Server Error' }, { status: 500 });
+  }
+}
 
 export async function GETALLTWEETS() {
   try {
