@@ -1,20 +1,25 @@
 import { Tweet } from '@/components/Tweet';
-import { GET } from 'app/api';
 import { type TweetData } from 'types';
 
 export default async function Home() {
   const fetchAllTweets = async () => {
     try {
-      const response = await GET();
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/tweets`,
+      );
+      if (!response.ok) {
+        throw new Error('Failed to fetch tweets');
+      }
       return await response.json();
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error('Error fetching all tweets:', error);
+      return [];
     }
   };
 
   const tweets = await fetchAllTweets();
 
-  if (!tweets.length) {
+  if (!tweets || tweets.length === 0) {
     return <h1>No posts to display</h1>;
   }
 
@@ -22,8 +27,8 @@ export default async function Home() {
     <div className="flex flex-col items-center justify-center m-auto">
       {tweets.map(
         ({
-          tweetId,
-          img_slug,
+          id,
+          profile_image_slug,
           name,
           username,
           created,
@@ -31,10 +36,10 @@ export default async function Home() {
           views,
         }: TweetData) => (
           <Tweet
-            key={tweetId}
+            key={id}
             {...{
-              tweetId,
-              img_slug,
+              id,
+              profile_image_slug,
               name,
               username,
               created,

@@ -6,8 +6,8 @@ import clsx from 'clsx';
 
 type TweetDataProps = TweetData & { isReply?: boolean };
 export const Tweet = ({
-  tweetId,
-  img_slug,
+  id,
+  profile_image_slug,
   name,
   username,
   created,
@@ -23,12 +23,12 @@ export const Tweet = ({
     >
       <div className="flex">
         <div className="flex flex-col items-center mr-2">
-          <TweetUserIcon {...{ img_slug }} />
+          <TweetUserIcon {...{ profile_image_slug }} />
           {isReply && <div className="bg-[#cfd9de] w-[2px] h-full mt-1" />}
         </div>
         <div className="flex flex-col w-full mr-2">
           <TweetHeader
-            {...{ img_slug, name, username, created }}
+            {...{ profile_image_slug, name, username, created }}
             isModal={true}
           />
           <p className="mt-1">{content}</p>
@@ -37,7 +37,7 @@ export const Tweet = ({
               Replying to <span className="text-twitterBlue">@{username}</span>
             </p>
           )}
-          {!isReply && <TweetActions {...{ tweetId, views }} />}
+          {!isReply && <TweetActions {...{ id, views }} />}
         </div>
       </div>
     </article>
