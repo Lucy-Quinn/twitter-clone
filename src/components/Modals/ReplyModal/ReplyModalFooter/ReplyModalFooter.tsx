@@ -1,13 +1,13 @@
 import { DeviceType } from '@/hooks/useDeviceType';
 
 type ReplyModalFooterProps = {
-  onReply: React.MouseEventHandler<HTMLButtonElement>;
+  onMessageSubmit: React.MouseEventHandler<HTMLButtonElement>;
   isButtonDisabled: boolean;
   deviceType: DeviceType;
 };
 
 export const ReplyModalFooter = ({
-  onReply,
+  onMessageSubmit,
   isButtonDisabled,
   deviceType,
 }: ReplyModalFooterProps) => {
@@ -17,7 +17,7 @@ export const ReplyModalFooter = ({
       {deviceType !== DeviceType.mobile && (
         <button
           className="button bg-twitterBlue my-[10px]"
-          onClick={onReply}
+          onClick={onMessageSubmit}
           disabled={isButtonDisabled}
         >
           Reply

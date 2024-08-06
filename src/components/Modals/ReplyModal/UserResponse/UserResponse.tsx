@@ -2,7 +2,7 @@ import { TweetUserIcon } from '@/components/Tweet/TweetUserIcon';
 import { useState } from 'react';
 
 type UserResponseProps = {
-  handleReplyChange: (value: boolean) => void;
+  handleReplyChange: (value: string) => void;
 };
 
 export const UserResponse = ({ handleReplyChange }: UserResponseProps) => {
@@ -10,15 +10,15 @@ export const UserResponse = ({ handleReplyChange }: UserResponseProps) => {
 
   const handleOnChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const { value } = event.target;
-    handleReplyChange(value.length === 0);
+    handleReplyChange(value);
     setreplyMessage(value);
   };
 
   return (
     <div className="flex">
-      <TweetUserIcon img_slug="/icons/user.jpg" classes="mt-3 mr-2" />
+      <TweetUserIcon profile_image_slug="/icons/user.jpg" classes="mt-3 mr-2" />
       <textarea
-        className="mt-3 text-xl leading-6 outline-none resize-none pt-[7px] placeholder-fontBlack placeholder-opacity-[0.73]"
+        className="mt-3 text-xl leading-6 outline-none resize-none pt-[7px] placeholder-fontBlack placeholder-opacity-[0.73] w-full"
         value={replyMessage}
         onChange={handleOnChange}
         rows={5}

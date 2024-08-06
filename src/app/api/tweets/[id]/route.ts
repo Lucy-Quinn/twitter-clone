@@ -16,7 +16,7 @@ export async function GET(
         FROM tweets t
         JOIN users u ON t.user_id = u.id
         WHERE t.id = ${id}
-        ORDER BY t.created_at DESC`;
+        ORDER BY t.created_at DESC;`;
 
     const foundTweet = await dbQuery(query);
     return Response.json(foundTweet.rows);

@@ -6,6 +6,8 @@ import { UserResponse } from './UserResponse';
 import { type TweetData } from 'types';
 import useDeviceType from '@/hooks/useDeviceType';
 import { ReplyModalFooter } from './ReplyModalFooter';
+//@ts-ignore
+import { useRouter, usePathname } from 'next/navigation';
 
 type ReplyModalProps = Pick<TweetData, 'id'>;
 
@@ -17,9 +19,12 @@ const defaultData = {
   created: '',
 };
 
-export const ReplyModal = ({ id }: ReplyModalProps) => {
+export const ReplyModal = ({ id: tweetId }: ReplyModalProps) => {
   const [data, setData] = useState<TweetData | null>(null);
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const [replyMessage, setReplyMessage] = useState('');
+  const router = useRouter();
+  const pathname = usePathname(); // Get the current pathname
   const deviceType = useDeviceType();
   const { name, username, profile_image_slug, content, created } =
     data ?? defaultData;
@@ -28,7 +33,7 @@ export const ReplyModal = ({ id }: ReplyModalProps) => {
     const fetchTweetById = async () => {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/tweets/${id}`,
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/tweets/${tweetId}`,
         );
         if (!response.ok) {
           throw new Error('Failed to fetch tweet by id');
@@ -41,24 +46,53 @@ export const ReplyModal = ({ id }: ReplyModalProps) => {
       }
     };
     fetchTweetById();
-  }, [id]);
+  }, [tweetId]);
 
-  const handleReplySubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
-    //TODO
+  const handleMessageSubmit = async (
+    event: React.MouseEvent<HTMLButtonElement>,
+  ) => {
     event.preventDefault();
+    //@ts-ignore
+    const typeOfButton = event.target.innerText.toLowerCase();
+    try {
+      const response = await fetch(
+        typeOfButton === 'reply'
+          ? `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/replies/${tweetId}`
+          : `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/drafts/unsent`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            tweetMessage: replyMessage,
+            userId: 3,
+            ...(typeOfButton === 'drafts' && { tweetId }),
+          }),
+        },
+      );
+
+      if (!response.ok) {
+        throw new Error(`Failed to submit ${typeOfButton}`);
+      }
+      router.push(typeOfButton === 'reply' ? '/home' : 'drafts');
+    } catch (error) {
+      console.error('Error submitting reply:', error);
+    }
   };
 
-  const handleReplyChange = (isDisabled: boolean) => {
-    setIsButtonDisabled(isDisabled);
+  const handleReplyChange = (value: string) => {
+    setReplyMessage(value);
+    setIsButtonDisabled(value.length === 0);
   };
 
   return (
     <>
-      {data && (
+      {pathname === `/reply/${tweetId}` && data && (
         <dialog className="left-0 top-0 w-full h-full bg-[black] bg-opacity-40 z-50 overflow-auto flex justify-center items-center">
           <div className="fixed max-w-[600px] bg-[#fff] h-full p-4 md:h-auto lg:m-8 md:rounded-2xl">
             <ReplyModalHeader
-              onReply={handleReplySubmit}
+              onMessageSubmit={handleMessageSubmit}
               {...{ isButtonDisabled, deviceType }}
             />
             <div className="flex flex-col pt-4">
@@ -69,7 +103,7 @@ export const ReplyModal = ({ id }: ReplyModalProps) => {
               <UserResponse handleReplyChange={handleReplyChange} />
             </div>
             <ReplyModalFooter
-              onReply={handleReplySubmit}
+              onMessageSubmit={handleMessageSubmit}
               {...{ isButtonDisabled, deviceType }}
             />
           </div>

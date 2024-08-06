@@ -1,4 +1,5 @@
 import { TweetAction } from '@/components/Tweet/TweetActions/TweetAction';
+//@ts-ignore
 import { useRouter } from 'next/navigation';
 
 type DraftModalHeaderProps = {
