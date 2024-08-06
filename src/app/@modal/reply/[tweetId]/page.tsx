@@ -1,6 +1,10 @@
+'use client';
 import { ReplyModal } from '@/components/Modals';
+import { usePathname } from 'next/navigation';
 
 export default function ReplyM({ params }: { params: { tweetId: string } }) {
-  const id = Number(params.tweetId);
-  return <ReplyModal {...{ id }} />;
+  const { tweetId: id } = params;
+  const pathname = usePathname();
+
+  return pathname === `/reply/${id}` && <ReplyModal {...{ id }} />;
 }

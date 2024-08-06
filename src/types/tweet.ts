@@ -1,5 +1,5 @@
 export type TweetData = {
-  id?: number;
+  id?: string;
   profile_image_slug: string;
   name: string;
   username: string;

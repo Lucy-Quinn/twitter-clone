@@ -5,13 +5,13 @@ import { useRouter } from 'next/navigation';
 
 type ReplyModalHeaderProps = {
   onMessageSubmit: React.MouseEventHandler<HTMLButtonElement>;
-  isButtonDisabled: boolean;
+  isReplyButtonDisabled: boolean;
   deviceType: DeviceType;
 };
 
 export const ReplyModalHeader = ({
   onMessageSubmit,
-  isButtonDisabled,
+  isReplyButtonDisabled,
   deviceType,
 }: ReplyModalHeaderProps) => {
   const router = useRouter();
@@ -32,7 +32,7 @@ export const ReplyModalHeader = ({
             <button
               className="button bg-twitterBlue my-[10px]"
               onClick={onMessageSubmit}
-              disabled={isButtonDisabled}
+              disabled={isReplyButtonDisabled}
             >
               Reply
             </button>
