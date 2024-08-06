@@ -25,3 +25,8 @@ export type ScheduledPostData = {
   originalTweetUsername: string;
   originalTweetId: string;
 };
+
+export enum DraftType {
+  UNSENT = 'UNSENT',
+  SCHEDULED = 'SCHEDULED',
+}

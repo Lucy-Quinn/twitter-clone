@@ -1,9 +1,9 @@
-import { TabType } from '../DraftModal';
+import { DraftType } from '@/types/tweet';
 import { ScheduledPosts } from './ScheduledPosts';
 import { UnsentPosts } from './UnsentPosts';
 
 type DraftModalContentProps = {
-  isUnsentSelected: TabType;
+  isUnsentSelected: DraftType;
 };
 export const DraftModalContent = ({
   isUnsentSelected,
@@ -12,7 +12,7 @@ export const DraftModalContent = ({
 
   return (
     <div className="border-t border-b border-fontGrey border-opacity-10">
-      {isUnsentSelected === 'unsentPost' ? (
+      {isUnsentSelected === DraftType.UNSENT ? (
         <UnsentPosts {...{ userId }} />
       ) : (
         <ScheduledPosts {...{ userId }} />

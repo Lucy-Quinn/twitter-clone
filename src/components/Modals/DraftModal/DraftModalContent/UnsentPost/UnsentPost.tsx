@@ -1,5 +1,5 @@
 import { Comment as CommentIcon } from '@/components/icons';
-import { UnsentPostData } from 'types';
+import { type UnsentPostData } from '@/types/tweet';
 
 type UnsentPostProps = Pick<
   UnsentPostData,

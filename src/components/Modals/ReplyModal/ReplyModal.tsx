@@ -3,11 +3,11 @@ import { useEffect, useState } from 'react';
 import { Tweet as OriginalTweet } from '@/components/Tweet';
 import { ReplyModalHeader } from './ReplyModalHeader';
 import { UserResponse } from './UserResponse';
-import { type TweetData } from 'types';
 import useDeviceType from '@/hooks/useDeviceType';
 import { ReplyModalFooter } from './ReplyModalFooter';
 //@ts-ignore
 import { useRouter, usePathname } from 'next/navigation';
+import { type TweetData } from '@/types/tweet';
 
 type ReplyModalProps = Pick<TweetData, 'id'>;
 
@@ -24,7 +24,7 @@ export const ReplyModal = ({ id: tweetId }: ReplyModalProps) => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [replyMessage, setReplyMessage] = useState('');
   const router = useRouter();
-  const pathname = usePathname(); // Get the current pathname
+  const pathname = usePathname();
   const deviceType = useDeviceType();
   const { name, username, profile_image_slug, content, created } =
     data ?? defaultData;
@@ -51,13 +51,12 @@ export const ReplyModal = ({ id: tweetId }: ReplyModalProps) => {
   const handleMessageSubmit = async (
     event: React.MouseEvent<HTMLButtonElement>,
   ) => {
-    event.preventDefault();
     //@ts-ignore
     const typeOfButton = event.target.innerText.toLowerCase();
     try {
       const response = await fetch(
         typeOfButton === 'reply'
-          ? `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/replies/${tweetId}`
+          ? `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/tweets/${tweetId}/replies`
           : `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/drafts/unsent`,
         {
           method: 'POST',

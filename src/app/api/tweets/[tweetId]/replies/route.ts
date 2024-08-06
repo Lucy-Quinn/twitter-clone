@@ -1,12 +1,12 @@
-import { dbQuery } from '../../../../../data/db';
+import { dbQuery } from 'app/api/db';
 
 export async function POST(
   request: Request,
-  { params }: { params: { id: string } },
+  { params }: { params: { tweetId: string } },
 ) {
   try {
     const data = await request.json();
-    const { id: tweetId } = params;
+    const { tweetId } = params;
 
     const { tweetMessage, userId } = data;
     const query = `

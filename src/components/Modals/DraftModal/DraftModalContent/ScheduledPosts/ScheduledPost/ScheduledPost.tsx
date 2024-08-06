@@ -1,5 +1,5 @@
-import { ScheduledPostData } from 'types';
 import { CalendarIcon, Comment as CommentIcon } from '@/components/icons';
+import { type ScheduledPostData } from '@/types/tweet';
 
 type ScheduledPostProps = Pick<
   ScheduledPostData,

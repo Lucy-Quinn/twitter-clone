@@ -1,4 +1,4 @@
-import { dbQuery } from '../../../../../data/db';
+import { dbQuery } from 'app/api/db';
 
 export async function POST(request: Request) {
   try {

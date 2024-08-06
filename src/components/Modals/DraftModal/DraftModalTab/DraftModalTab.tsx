@@ -1,11 +1,11 @@
 import clsx from 'clsx';
-import { TabType } from '../DraftModal';
 import { splitStringIntoWords } from '@/utils/split-string-into-words';
+import { DraftType } from '@/types/tweet';
 
 type DraftModalTabProps = {
-  handleTab: (title: TabType) => void;
+  handleTab: (title: DraftType) => void;
   isSelected: boolean;
-  title: TabType;
+  title: DraftType;
 };
 export const DraftModalTab = ({
   handleTab,
@@ -24,7 +24,7 @@ export const DraftModalTab = ({
           'font-medium text-fontGrey': !isSelected,
         })}
       >
-        {splitStringIntoWords(title)}
+        {splitStringIntoWords(title.toLowerCase())}
       </p>
       <div className="h-1">
         {isSelected && <div className="bg-twitterBlue w-full rounded-sm h-1" />}

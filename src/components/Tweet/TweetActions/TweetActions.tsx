@@ -4,7 +4,7 @@ import { TweetAction } from './TweetAction';
 import { useState } from 'react';
 //@ts-ignore
 import { useRouter } from 'next/navigation';
-import { TweetData } from 'types';
+import { type TweetData } from '@/types/tweet';
 
 type TweetActionsProps = Pick<TweetData, 'views' | 'id'>;
 

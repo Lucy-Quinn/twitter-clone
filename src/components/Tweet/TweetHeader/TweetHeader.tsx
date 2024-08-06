@@ -1,6 +1,6 @@
 import Image from 'next/image';
+import { type TweetData } from '@/types/tweet';
 import { TweetAction } from '../TweetActions/TweetAction';
-import { TweetData } from 'types';
 
 export type TweetHeaderProps = Pick<
   TweetData,

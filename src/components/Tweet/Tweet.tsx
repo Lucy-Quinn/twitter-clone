@@ -1,4 +1,4 @@
-import { TweetData } from 'types';
+import { type TweetData } from '@/types/tweet';
 import { TweetActions } from './TweetActions';
 import { TweetHeader } from './TweetHeader';
 import { TweetUserIcon } from './TweetUserIcon';

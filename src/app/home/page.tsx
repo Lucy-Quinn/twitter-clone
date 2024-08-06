@@ -1,5 +1,5 @@
 import { Tweet } from '@/components/Tweet';
-import { type TweetData } from 'types';
+import { type TweetData } from '@/types/tweet';
 
 export default async function Home() {
   const fetchAllTweets = async () => {
