@@ -8,7 +8,7 @@ type DraftModalContentProps = {
 export const DraftModalContent = ({
   isUnsentSelected,
 }: DraftModalContentProps) => {
-  const userId = '1';
+  const userId = '3';
 
   return (
     <div className="border-t border-b border-fontGrey border-opacity-10">

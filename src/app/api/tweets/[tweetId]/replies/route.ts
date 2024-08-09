@@ -1,7 +1,8 @@
 import { dbQuery } from 'app/api/db';
+import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(
-  request: Request,
+  request: NextRequest,
   { params }: { params: { tweetId: string } },
 ) {
   try {
@@ -16,9 +17,12 @@ export async function POST(
       `;
 
     const response = await dbQuery(query);
-    return Response.json(response);
+    return NextResponse.json(response);
   } catch (error) {
     console.error('Error creating tweet reply:', error);
-    return Response.json({ error: 'Internal Server Error' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Internal Server Error' },
+      { status: 500 },
+    );
   }
 }

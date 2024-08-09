@@ -1,7 +1,8 @@
 import { dbQuery } from 'app/api/db';
+import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(
-  request: Request,
+  request: NextRequest,
   { params }: { params: { tweetId: string } },
 ) {
   const { tweetId } = params;
@@ -19,9 +20,12 @@ export async function GET(
         ORDER BY t.created_at DESC;`;
 
     const foundTweet = await dbQuery(query);
-    return Response.json(foundTweet.rows);
+    return NextResponse.json(foundTweet.rows);
   } catch (error) {
     console.error('Error fetching tweet by ID:', error);
-    return Response.json({ error: 'Internal Server Error' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Internal Server Error' },
+      { status: 500 },
+    );
   }
 }

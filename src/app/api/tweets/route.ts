@@ -1,4 +1,5 @@
 import { dbQuery } from 'app/api/db';
+import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET() {
   try {
@@ -14,14 +15,17 @@ export async function GET() {
       ORDER BY t.created_at DESC`;
 
     const tweets = await dbQuery(query);
-    return Response.json(tweets.rows);
+    return NextResponse.json(tweets.rows);
   } catch (error) {
     console.error('Error fetching all tweets:', error);
-    return Response.json({ error: 'Internal Server Error' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Internal Server Error' },
+      { status: 500 },
+    );
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
     const data = await request.json();
 
@@ -33,9 +37,12 @@ export async function POST(request: Request) {
       `;
 
     const response = await dbQuery(query);
-    return Response.json(response);
+    return NextResponse.json(response);
   } catch (error) {
     console.error('Error creating tweet:', error);
-    return Response.json({ error: 'Internal Server Error' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Internal Server Error' },
+      { status: 500 },
+    );
   }
 }

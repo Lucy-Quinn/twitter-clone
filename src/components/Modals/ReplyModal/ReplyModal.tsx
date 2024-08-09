@@ -40,23 +40,20 @@ export const ReplyModal = ({ id: tweetId }: ReplyModalProps) => {
   const handleMessageSubmit = async (
     event: React.MouseEvent<HTMLButtonElement>,
   ) => {
-    //@ts-ignore
-    const typeOfButton = (
-      event.target as HTMLButtonElement
-    ).innerText.toLowerCase();
+    const buttonId = (event.target as HTMLButtonElement).id.toLowerCase();
 
-    if (typeOfButton === 'drafts' && isReplyButtonDisabled) {
+    if (buttonId === 'unsent' && isReplyButtonDisabled) {
       router.push('drafts');
     } else {
       try {
         const isSuccess = await submitMessage(
-          typeOfButton,
+          buttonId,
           tweetId ?? '',
           postMessage,
           3,
         );
 
-        isSuccess && router.push(typeOfButton === 'reply' ? '/home' : 'drafts');
+        isSuccess && router.push(buttonId === 'reply' ? '/home' : 'drafts');
       } catch (error) {
         console.error('Error submitting reply:', error);
       }

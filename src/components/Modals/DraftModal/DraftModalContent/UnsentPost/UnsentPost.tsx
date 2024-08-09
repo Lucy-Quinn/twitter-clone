@@ -7,15 +7,11 @@ type UnsentPostProps = Pick<
 >;
 
 export const UnsentPost = ({
-  unsentPostId,
   originalTweetUsername,
   content,
 }: UnsentPostProps) => {
   return (
-    <div
-      key={unsentPostId}
-      className="border-b border-fontGrey border-opacity-10 p-4"
-    >
+    <div className="border-b border-fontGrey border-opacity-10 p-4">
       <div className="flex items-center gap-2 text-[13px]">
         <CommentIcon className="w-4 h-4 text-[#536471]" />
         <div className="text-[#536471] font-bold">

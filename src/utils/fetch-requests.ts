@@ -15,20 +15,23 @@ export const fetchTweetById = async (tweetId: string) => {
 };
 
 export const submitMessage = async (
-  typeOfButton: string,
+  buttonType: string,
   tweetId: string,
   replyMessage: string,
   userId: number,
 ) => {
   const endpoint =
-    typeOfButton === 'reply'
+    buttonType === 'reply'
       ? `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/tweets/${tweetId}/replies`
-      : `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/drafts/unsent`;
+      : buttonType === 'scheduled'
+        ? `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/drafts/scheduled`
+        : `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/drafts/unsent`;
 
   const body = JSON.stringify({
     tweetMessage: replyMessage,
     userId,
-    ...(typeOfButton === 'drafts' && { tweetId }),
+    ...(buttonType === 'unsent' && { tweetId }),
+    ...(buttonType === 'scheduled' && { tweetId }),
   });
 
   try {
@@ -41,11 +44,45 @@ export const submitMessage = async (
     });
 
     if (!response.ok) {
-      throw new Error(`Failed to submit ${typeOfButton}`);
+      throw new Error(`Failed to submit ${buttonType}`);
     }
     return true;
   } catch (error) {
-    console.error(`Error submitting ${typeOfButton}:`, error);
+    console.error(`Error submitting ${buttonType}:`, error);
     return false;
+  }
+};
+
+export const fetchUnsentPosts = async (userId: string) => {
+  //TODO will eventually get userID from cookie and put in
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/drafts/unsent?userId=${userId}`,
+    );
+    if (!response.ok) {
+      throw new Error('Failed to fetch unsent posts');
+    }
+    const unsentPosts = await response.json();
+    return unsentPosts;
+  } catch (error) {
+    console.error('Error fetching all unsent posts:', error);
+    return [];
+  }
+};
+
+export const fetchScheduledPosts = async (userId: string) => {
+  //TODO will eventually get userID from cookie and put in
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/drafts/scheduled?userId=${userId}`,
+    );
+    if (!response.ok) {
+      throw new Error('Failed to fetch scheduled posts');
+    }
+    const unsentPosts = await response.json();
+    return unsentPosts;
+  } catch (error) {
+    console.error('Error fetching all scheduled posts:', error);
+    return [];
   }
 };

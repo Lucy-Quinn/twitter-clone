@@ -6,15 +6,15 @@ export async function GET(request: NextRequest) {
 
   try {
     const query = `SELECT 
-        u_p.id, 
-        u_p.content, 
-        u_p.updated_at, 
-        u_p.created_at, 
+        s_p.id, 
+        s_p.content, 
+        s_p.scheduled_time, 
+        s_p.created_at, 
         u.username
-      FROM unsent_posts u_p
-      JOIN users u ON u_p.user_id = u.id
-        WHERE u.id = $1
-      ORDER BY u_p.created_at DESC`;
+      FROM scheduled_posts s_p
+      JOIN users u ON s_p.user_id = u.id
+      WHERE u.id = $1
+      ORDER BY s_p.created_at DESC`;
 
     const unsentPosts = await dbQuery(query, [userId]);
     return NextResponse.json(unsentPosts.rows);
@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
 
     const { tweetMessage, userId, tweetId } = data;
     const query = `
-      INSERT INTO unsent_posts (content, tweet_id, user_id, updated_at)
+      INSERT INTO scheduled_posts (content, tweet_id, user_id, scheduled_time)
       VALUES ('${tweetMessage}', ${tweetId}, ${userId}, CURRENT_TIMESTAMP)
       RETURNING *;
     `;
