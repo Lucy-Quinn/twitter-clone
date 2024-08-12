@@ -1,6 +1,6 @@
 export type TweetData = {
-  tweetId?: number;
-  img_slug: string;
+  id?: string;
+  profile_image_slug: string;
   name: string;
   username: string;
   created: string;
@@ -25,3 +25,8 @@ export type ScheduledPostData = {
   originalTweetUsername: string;
   originalTweetId: string;
 };
+
+export enum DraftType {
+  UNSENT = 'UNSENT',
+  SCHEDULED = 'SCHEDULED',
+}

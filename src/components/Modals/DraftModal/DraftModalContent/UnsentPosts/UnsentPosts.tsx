@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { GETALLUNSENTPOSTSBYUSERID } from 'app/api';
 import { UnsentPost } from '../UnsentPost/UnsentPost';
+import { fetchUnsentPosts } from '@/utils/fetch-requests';
 
 type UnsentPostsProps = {
   userId: string;
@@ -9,25 +9,22 @@ export const UnsentPosts = ({ userId }: UnsentPostsProps) => {
   const [unsentPosts, setUnsentPosts] = useState([]);
 
   useEffect(() => {
-    async function fetchAllUnsentPosts() {
-      try {
-        const responseData = await GETALLUNSENTPOSTSBYUSERID({ userId });
-        setUnsentPosts(responseData);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    }
-    fetchAllUnsentPosts();
-  }, []);
+    const fetchData = async () => {
+      const unsentPosts = await fetchUnsentPosts(userId ?? '');
+      setUnsentPosts(unsentPosts);
+    };
+    fetchData();
+  }, [userId]);
 
   return (
     <>
       {unsentPosts &&
-        unsentPosts.map(({ unsentPostId, originalTweetUsername, content }) => {
+        unsentPosts.map(({ id, username, content }) => {
           return (
             <UnsentPost
-              {...{ originalTweetUsername, content }}
-              key={unsentPostId}
+              {...{ content }}
+              originalTweetUsername={username}
+              key={id}
             />
           );
         })}

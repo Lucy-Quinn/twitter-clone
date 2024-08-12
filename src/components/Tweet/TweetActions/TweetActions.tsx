@@ -2,12 +2,13 @@
 
 import { TweetAction } from './TweetAction';
 import { useState } from 'react';
+//@ts-ignore
 import { useRouter } from 'next/navigation';
-import { TweetData } from 'types';
+import { type TweetData } from '@/types/tweet';
 
-type TweetActionsProps = Pick<TweetData, 'views' | 'tweetId'>;
+type TweetActionsProps = Pick<TweetData, 'views' | 'id'>;
 
-export const TweetActions = ({ tweetId, views }: TweetActionsProps) => {
+export const TweetActions = ({ id: tweetId, views }: TweetActionsProps) => {
   const [likes, setLikes] = useState(0);
   const [reposts, setReposts] = useState(0);
   const [replies, setReplies] = useState(0);

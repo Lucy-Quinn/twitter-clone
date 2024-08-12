@@ -1,16 +1,18 @@
 import { TweetAction } from '@/components/Tweet/TweetActions/TweetAction';
 import { DeviceType } from '@/hooks/useDeviceType';
+//@ts-ignore
 import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 type ReplyModalHeaderProps = {
-  onReply: React.MouseEventHandler<HTMLButtonElement>;
-  isButtonDisabled: boolean;
+  onMessageSubmit: React.MouseEventHandler<HTMLButtonElement>;
+  isReplyButtonDisabled: boolean;
   deviceType: DeviceType;
 };
 
 export const ReplyModalHeader = ({
-  onReply,
-  isButtonDisabled,
+  onMessageSubmit,
+  isReplyButtonDisabled,
   deviceType,
 }: ReplyModalHeaderProps) => {
   const router = useRouter();
@@ -19,23 +21,25 @@ export const ReplyModalHeader = ({
     router.back();
   };
 
-  const handleDrafts = () => {
-    router.push(`drafts`);
-  };
-
+  console.log('isReplyButtonDisabled', isReplyButtonDisabled);
   return (
     <div className="flex justify-between items-center">
       {deviceType === DeviceType.mobile ? (
         <>
           <TweetAction name="BackArrow" onClick={handleClose} />
           <div className="flex gap-3 [&>*]:px-4 [&>*]:text-sm [&>*]:min-h-8">
-            <button className="transparent-button" onClick={handleDrafts}>
+            <button
+              id="unsent"
+              className="transparent-button"
+              onClick={onMessageSubmit}
+            >
               Drafts
             </button>
             <button
+              id="reply"
               className="button bg-twitterBlue my-[10px]"
-              onClick={onReply}
-              disabled={isButtonDisabled}
+              onClick={onMessageSubmit}
+              disabled={isReplyButtonDisabled}
             >
               Reply
             </button>
@@ -45,8 +49,9 @@ export const ReplyModalHeader = ({
         <>
           <TweetAction name="Close" onClick={handleClose} color="fontGrey" />
           <button
+            id="unsent"
             className="transparent-button lg:hover:bg-twitterBlue lg:hover:bg-opacity-15 lg:py-2 lg:px-4 lg:hover:rounded-full"
-            onClick={handleDrafts}
+            onClick={onMessageSubmit}
           >
             Drafts
           </button>
