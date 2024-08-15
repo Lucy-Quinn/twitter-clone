@@ -23,15 +23,15 @@ export const submitMessage = async (
   const endpoint =
     buttonType === 'reply'
       ? `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/tweets/${tweetId}/replies`
-      : buttonType === 'scheduled'
-        ? `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/drafts/scheduled`
+      : buttonType === 'schedule'
+        ? `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/drafts/schedule`
         : `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/drafts/unsent`;
 
   const body = JSON.stringify({
     tweetMessage: replyMessage,
     userId,
     ...(buttonType === 'unsent' && { tweetId }),
-    ...(buttonType === 'scheduled' && { tweetId }),
+    ...(buttonType === 'schedule' && { tweetId }),
   });
 
   try {

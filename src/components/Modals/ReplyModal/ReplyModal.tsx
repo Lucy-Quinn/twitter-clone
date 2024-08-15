@@ -44,6 +44,8 @@ export const ReplyModal = ({ id: tweetId }: ReplyModalProps) => {
 
     if (buttonId === 'unsent' && isReplyButtonDisabled) {
       router.push('drafts');
+    } else if (buttonId === 'schedule') {
+      router.push('schedule');
     } else {
       try {
         const isSuccess = await submitMessage(

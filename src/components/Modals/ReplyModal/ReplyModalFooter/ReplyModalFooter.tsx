@@ -14,7 +14,7 @@ export const ReplyModalFooter = ({
   return (
     <div className="flex justify-between items-center [&>*]:px-4 [&>*]:text-sm [&>*]:min-h-8">
       <div>
-        <span id="scheduled" onClick={onMessageSubmit}>
+        <span id="schedule" onClick={onMessageSubmit}>
           Schedule post
         </span>
       </div>

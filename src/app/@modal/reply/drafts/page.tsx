@@ -1,4 +1,4 @@
-import { DraftModal } from '@/components/Modals/DraftModal';
+import { DraftModal } from '@/components/Modals';
 
 export default function draftsM() {
   return <DraftModal />;

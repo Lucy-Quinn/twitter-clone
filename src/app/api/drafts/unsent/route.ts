@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
     const unsentPosts = await dbQuery(query, [userId]);
     return NextResponse.json(unsentPosts.rows);
   } catch (error) {
-    console.error('Error fetching all tweets:', error);
+    console.error('Error fetching all unsent posts:', error);
     return NextResponse.json(
       { error: 'Internal Server Error' },
       { status: 500 },
@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
     const response = await dbQuery(query);
     return NextResponse.json(response);
   } catch (error) {
-    console.error('Error creating draft reply:', error);
+    console.error('Error creating unsent post:', error);
     return NextResponse.json(
       { error: 'Internal Server Error' },
       { status: 500 },

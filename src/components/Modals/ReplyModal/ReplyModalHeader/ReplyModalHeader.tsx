@@ -1,8 +1,6 @@
 import { TweetAction } from '@/components/Tweet/TweetActions/TweetAction';
 import { DeviceType } from '@/hooks/useDeviceType';
-//@ts-ignore
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
 
 type ReplyModalHeaderProps = {
   onMessageSubmit: React.MouseEventHandler<HTMLButtonElement>;
@@ -21,7 +19,6 @@ export const ReplyModalHeader = ({
     router.back();
   };
 
-  console.log('isReplyButtonDisabled', isReplyButtonDisabled);
   return (
     <div className="flex justify-between items-center">
       {deviceType === DeviceType.mobile ? (
