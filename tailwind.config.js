@@ -26,6 +26,7 @@ module.exports = {
         twitterPink: '#EC407F',
         twitterGreen: '#54BB7D',
         fontGrey: '#71767b',
+        borderGrey: '#cfd9de',
       },
     },
   },

@@ -12,6 +12,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@clerk/nextjs": "^5.3.1",
     "@storybook/addon-styling": "^1.3.7",
     "autoprefixer": "^10.4.19",
     "clsx": "^2.1.1",
