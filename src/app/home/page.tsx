@@ -1,54 +1,28 @@
 import { Tweet } from '@/components/Tweet';
+import { Tweets } from '@/components/Tweets';
 import { type TweetData } from '@/types/tweet';
+import { fetchAllTweets } from '@/utils/fetch-requests';
+import { useEffect, useState } from 'react';
 
 export default async function Home() {
-  const fetchAllTweets = async () => {
-    try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/tweets`,
-      );
-      if (!response.ok) {
-        throw new Error('Failed to fetch tweets');
-      }
-      return await response.json();
-    } catch (error) {
-      console.error('Error fetching all tweets:', error);
-      return [];
-    }
-  };
+  // const fetchAllTweets = async () => {
+  //   try {
+  //     const response = await fetch(
+  //       `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/tweets`,
+  //     );
+  //     console.log('🚀 ~ fetchAllTweets ~ response:', response);
 
-  const tweets = await fetchAllTweets();
+  //     if (!response.ok) {
+  //       throw new Error('Failed to fetch tweets');
+  //     }
+  //     return await response.json();
+  //   } catch (error) {
+  //     console.error('Error fetching all tweets:', error);
+  //     return [];
+  //   }
+  // };
 
-  if (!tweets || tweets.length === 0) {
-    return <h1>No posts to display</h1>;
-  }
+  // const tweets = await fetchAllTweets();
 
-  return (
-    <div className="flex flex-col items-center justify-center m-auto">
-      {tweets.map(
-        ({
-          id,
-          profile_image_slug,
-          name,
-          username,
-          created,
-          content,
-          views,
-        }: TweetData) => (
-          <Tweet
-            key={id}
-            {...{
-              id,
-              profile_image_slug,
-              name,
-              username,
-              created,
-              content,
-              views,
-            }}
-          />
-        ),
-      )}
-    </div>
-  );
+  return <Tweets />;
 }

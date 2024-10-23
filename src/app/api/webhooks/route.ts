@@ -72,7 +72,7 @@ export async function POST(req: Request) {
         first_name,
         username,
         profile_image_url,
-        'geojohn12345',
+        'katypi12345',
         email_address,
       ]);
       console.log('🚀 ~ POST ~ response:', response);

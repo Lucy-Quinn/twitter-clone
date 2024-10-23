@@ -10,12 +10,12 @@ const isPublicRoute = createRouteMatcher([
 
 export default clerkMiddleware(
   (auth, request) => {
-    const { userId } = auth();
-    // console.log('🚀 ~ SignUpModal ~ userId:', userId);
-    // console.log('isPublicRoute(request)', !isPublicRoute(request));
-    // if (!isPublicRoute(request)) {
-    //   auth().protect();
-    // }
+    const authResult = auth();
+    const { userId } = authResult;
+    if (!isPublicRoute(request)) {
+      console.log('HELLO');
+      authResult.protect();
+    }
   },
   // { debug: true },
 );
