@@ -5,7 +5,6 @@ import React, { useEffect, useState } from 'react';
 import { Tweet } from '../Tweet/Tweet';
 
 export const Tweets = () => {
-  console.log('TWEETS');
   const [tweets, setTweets] = useState([]);
 
   useEffect(() => {
