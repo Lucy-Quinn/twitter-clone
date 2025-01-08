@@ -82,8 +82,8 @@ export async function POST(req: Request) {
         const { email_address } = email_addresses[0];
 
         const query = `
-          INSERT INTO users (name, username, profile_image_slug, password, email)
-          VALUES ($1, $2, $3, $4, $5)
+          INSERT INTO users (name, username, profile_image_slug, email)
+          VALUES ($1, $2, $3, $4)
           RETURNING *;
         `;
 
@@ -91,7 +91,6 @@ export async function POST(req: Request) {
           first_name,
           username,
           profile_image_url,
-          'xfSLfHHV2x1*uc1K',
           email_address,
         ]);
         return NextResponse.json(response);
