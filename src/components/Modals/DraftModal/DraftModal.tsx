@@ -5,6 +5,7 @@ import { DraftModalHeader } from './DraftModalHeader';
 import { DraftModalContent } from './DraftModalContent';
 import { DraftModalTab } from './DraftModalTab';
 import { DraftType } from '@/types/tweet';
+import { DialogWrapper } from '@/components/DialogWrapper';
 
 // export enum DraftType {
 //   unsentPost = 'unsentPost',
@@ -22,7 +23,7 @@ export const DraftModal = () => {
 
   return (
     <div className="w-8">
-      <dialog className="left-0 top-0 w-full h-full bg-[black] bg-opacity-40 z-50 overflow-auto flex justify-center items-center">
+      <DialogWrapper>
         <div className="fixed max-w-[600px] min-h-[615px] md:min-w-[600px] bg-[#fff] h-full w-full md:h-auto lg:m-8 md:rounded-2xl">
           <DraftModalHeader
             isSelected={isUnsentSelected === DraftType.UNSENT}
@@ -41,7 +42,7 @@ export const DraftModal = () => {
           </div>
           <DraftModalContent {...{ isUnsentSelected }} />
         </div>
-      </dialog>
+      </DialogWrapper>
     </div>
   );
 };

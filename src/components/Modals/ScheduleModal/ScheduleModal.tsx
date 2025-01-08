@@ -1,4 +1,5 @@
 'use client';
+import { DialogWrapper } from '@/components/DialogWrapper';
 import { TweetAction } from '@/components/Tweet/TweetActions/TweetAction';
 import { useRouter } from 'next/navigation';
 
@@ -13,7 +14,7 @@ export const ScheduleModal = () => {
     router.back();
   };
   return (
-    <dialog className="left-0 top-0 w-full h-full bg-[black] bg-opacity-40 z-50 overflow-auto flex justify-center items-center">
+    <DialogWrapper>
       <div className="fixed min-w-[600px] bg-[#fff] h-full p-4 md:h-auto lg:m-8 md:rounded-2xl">
         <div className="flex items-center">
           <TweetAction name="Close" classes="min-w-14" onClick={handleClose} />
@@ -26,6 +27,6 @@ export const ScheduleModal = () => {
           </button>
         </div>
       </div>
-    </dialog>
+    </DialogWrapper>
   );
 };
