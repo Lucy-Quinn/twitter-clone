@@ -25,25 +25,25 @@ export const TweetActions = ({ id: tweetId, views }: TweetActionsProps) => {
       <TweetAction
         count={replies}
         name="Reply"
-        classes="grow"
+        classes={{ container: 'grow' }}
         onClick={handleReply}
       />
       <TweetAction
         count={reposts}
         name="Repost"
-        classes="grow"
+        classes={{ container: 'grow' }}
         onClick={handleRepost}
         color="twitterGreen"
       />
       <TweetAction
         count={likes}
         name="Like"
-        classes="grow"
+        classes={{ container: 'grow' }}
         onClick={handleLike}
         color="twitterPink"
       />
-      <TweetAction count={views} name="View" classes="grow" />
-      <TweetAction name="Bookmark" classes="mr-2" />
+      <TweetAction count={views} name="View" classes={{ container: 'grow' }} />
+      <TweetAction name="Bookmark" classes={{ container: 'mr-2' }} />
       <TweetAction name="Share" />
     </div>
   );
