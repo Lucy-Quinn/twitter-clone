@@ -2,22 +2,39 @@
 import { TweetData } from '@/types/tweet';
 import { fetchAllTweets } from '@/utils/fetch-requests';
 import React, { useEffect, useState } from 'react';
-import { Tweet } from '../Tweet/Tweet';
+import { Tweet } from '../Tweet';
 
 export const Tweets = () => {
   const [tweets, setTweets] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const tweets = await fetchAllTweets();
-      console.log('🚀 ~ fetchData ~ tweets:', tweets);
-      setTweets(tweets);
+      try {
+        setIsLoading(true);
+        const tweets = await fetchAllTweets();
+        setTweets(tweets);
+      } catch (error) {
+        console.error('Error fetching tweets:', error);
+        setError(error as Error);
+      } finally {
+        setIsLoading(false);
+      }
     };
     fetchData();
   }, []);
 
+  if (isLoading) {
+    return <div>Loading tweets...</div>;
+  }
+
+  if (error) {
+    return <div>Error loading tweets</div>;
+  }
+
   if (!tweets || tweets.length === 0) {
-    return <h1>No posts to display</h1>;
+    return <div>No posts to display</div>;
   }
 
   return (

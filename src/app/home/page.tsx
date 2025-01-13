@@ -4,7 +4,7 @@ import { type TweetData } from '@/types/tweet';
 import { fetchAllTweets } from '@/utils/fetch-requests';
 import { useEffect, useState } from 'react';
 
-export default async function Home() {
+export default function Home() {
   // const fetchAllTweets = async () => {
   //   try {
   //     const response = await fetch(

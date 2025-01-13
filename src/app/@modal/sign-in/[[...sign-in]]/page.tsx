@@ -1,5 +1,4 @@
 'use client';
-
 import { SignInModal } from '@/components/Modals/SignInModal';
 import { useAuth } from '@clerk/nextjs';
 import { useEffect } from 'react';

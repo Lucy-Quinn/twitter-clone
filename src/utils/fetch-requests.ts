@@ -15,7 +15,6 @@ export const fetchAllTweets = async () => {
   }
 };
 
-fetchAllTweets;
 export const fetchTweetById = async (tweetId: string) => {
   try {
     const response = await fetch(
