@@ -1,28 +1,12 @@
-import { Tweet } from '@/components/Tweet';
+import { Header } from '@/components/Header';
 import { Tweets } from '@/components/Tweets';
-import { type TweetData } from '@/types/tweet';
-import { fetchAllTweets } from '@/utils/fetch-requests';
-import { useEffect, useState } from 'react';
 
 export default function Home() {
-  // const fetchAllTweets = async () => {
-  //   try {
-  //     const response = await fetch(
-  //       `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/tweets`,
-  //     );
-  //     console.log('🚀 ~ fetchAllTweets ~ response:', response);
-
-  //     if (!response.ok) {
-  //       throw new Error('Failed to fetch tweets');
-  //     }
-  //     return await response.json();
-  //   } catch (error) {
-  //     console.error('Error fetching all tweets:', error);
-  //     return [];
-  //   }
-  // };
-
-  // const tweets = await fetchAllTweets();
-
-  return <Tweets />;
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 h-full">
+      <Header />
+      <Tweets />
+      {/* col 3 - misc */}
+    </div>
+  );
 }

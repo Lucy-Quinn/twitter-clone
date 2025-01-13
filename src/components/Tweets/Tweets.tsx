@@ -38,7 +38,7 @@ export const Tweets = () => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center m-auto">
+    <div className="flex flex-col">
       {tweets.map(
         ({
           id,
