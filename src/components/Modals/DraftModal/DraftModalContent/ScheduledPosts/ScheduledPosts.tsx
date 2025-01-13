@@ -7,7 +7,6 @@ type ScheduledPostsProps = {
 };
 export const ScheduledPosts = ({ userId }: ScheduledPostsProps) => {
   const [scheduledPosts, setScheduledPosts] = useState([]);
-  console.log('🚀 ~ ScheduledPosts ~ scheduledPosts:', scheduledPosts);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,7 +28,6 @@ export const ScheduledPosts = ({ userId }: ScheduledPostsProps) => {
     <>
       {scheduledPosts &&
         scheduledPosts.map(({ id, scheduled_time, username, content }) => {
-          console.log('🚀 ~ ScheduledPosts ~ scheduled_time:', scheduled_time);
           let lastUpdatedDate = new Date(scheduled_time);
 
           // const formattedDate = lastUpdatedDate.toLocaleDateString('en-US', {
@@ -47,7 +45,6 @@ export const ScheduledPosts = ({ userId }: ScheduledPostsProps) => {
             minute: '2-digit',
             timeZone: 'Europe/London',
           }).format(lastUpdatedDate);
-          console.log('🚀 ~ ScheduledPosts ~ formattedDate:', formattedDate);
 
           return (
             <ScheduledPost

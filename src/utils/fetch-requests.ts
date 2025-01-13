@@ -1,3 +1,20 @@
+export const fetchAllTweets = async () => {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/tweets`,
+    );
+    if (!response.ok) {
+      throw new Error('Failed to fetch all tweets');
+    }
+    const tweets = await response.json();
+    console.log('🚀 ~ fetchAllTweets ~ tweets:', tweets);
+    return tweets;
+  } catch (error) {
+    console.error('Error fetching all tweets', error);
+    return [];
+  }
+};
+
 export const fetchTweetById = async (tweetId: string) => {
   try {
     const response = await fetch(

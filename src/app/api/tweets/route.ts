@@ -32,11 +32,12 @@ export async function POST(request: NextRequest) {
     const { tweetMessage, userId } = data;
     const query = `
         INSERT INTO tweets (content, user_id)
-        VALUES ('${tweetMessage}', ${userId})
+        VALUES ($1, $2)
         RETURNING *;
       `;
 
-    const response = await dbQuery(query);
+    const response = await dbQuery(query, [tweetMessage, userId]);
+
     return NextResponse.json(response);
   } catch (error) {
     console.error('Error creating tweet:', error);

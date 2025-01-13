@@ -9,6 +9,7 @@ import { ReplyModalFooter } from './ReplyModalFooter';
 import { useRouter } from 'next/navigation';
 import { type TweetData } from '@/types/tweet';
 import { fetchTweetById, submitMessage } from '@/utils/fetch-requests';
+import { DialogWrapper } from '@/components/DialogWrapper';
 
 type ReplyModalProps = Pick<TweetData, 'id'>;
 
@@ -70,7 +71,7 @@ export const ReplyModal = ({ id: tweetId }: ReplyModalProps) => {
   return (
     <>
       {data && (
-        <dialog className="left-0 top-0 w-full h-full bg-[black] bg-opacity-40 z-50 overflow-auto flex justify-center items-center">
+        <DialogWrapper>
           <div className="fixed max-w-[600px] bg-[#fff] h-full p-4 md:h-auto lg:m-8 md:rounded-2xl">
             <ReplyModalHeader
               onMessageSubmit={handleMessageSubmit}
@@ -88,7 +89,7 @@ export const ReplyModal = ({ id: tweetId }: ReplyModalProps) => {
               {...{ isReplyButtonDisabled, deviceType }}
             />
           </div>
-        </dialog>
+        </DialogWrapper>
       )}
     </>
   );

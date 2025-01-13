@@ -9,6 +9,7 @@ import { BackArrow } from './BackArrow';
 import { Close } from './Close';
 export * from './Comment';
 export * from './CalendarIcon';
+export * from './logo';
 
 const actionIcons = {
   Reply,

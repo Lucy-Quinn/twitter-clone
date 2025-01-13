@@ -24,7 +24,7 @@ export const Tweet = ({
       <div className="flex">
         <div className="flex flex-col items-center mr-2">
           <TweetUserIcon {...{ profile_image_slug }} />
-          {isReply && <div className="bg-[#cfd9de] w-[2px] h-full mt-1" />}
+          {isReply && <div className="bg-borderGrey w-[2px] h-full mt-1" />}
         </div>
         <div className="flex flex-col w-full mr-2">
           <TweetHeader

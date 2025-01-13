@@ -1,5 +1,20 @@
-import Page from './home/page';
+'use client';
+import { useAuth } from '@clerk/nextjs';
+import RootPage from './page';
+import HomePage from './home/page';
 
-export default Page;
+export default function Default() {
+  const { isLoaded, isSignedIn } = useAuth();
 
-//get url - if cmpose or reply render homepage OR if not render null
+  if (isLoaded && !isSignedIn) {
+    return <RootPage />;
+  }
+
+  if (isLoaded && isSignedIn) {
+    return <HomePage />;
+  }
+
+  return null;
+}
+
+// export default Page;

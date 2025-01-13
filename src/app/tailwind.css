@@ -28,6 +28,19 @@ body {
   font-size: var(--font-size-md);
   background-color: var(--foreground-default);
   line-height: 20px;
+  height: 100vh;
+}
+
+h1{
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 84px;
+}
+
+h2{
+  font-size: 31px;
+  font-weight: 700;
+  line-height: 36px;
 }
 
 .button {
