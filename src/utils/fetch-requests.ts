@@ -7,7 +7,6 @@ export const fetchAllTweets = async () => {
       throw new Error('Failed to fetch all tweets');
     }
     const tweets = await response.json();
-    console.log('🚀 ~ fetchAllTweets ~ tweets:', tweets);
     return tweets;
   } catch (error) {
     console.error('Error fetching all tweets', error);
