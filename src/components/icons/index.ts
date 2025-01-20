@@ -10,6 +10,7 @@ import { Close } from './Close';
 export * from './Comment';
 export * from './CalendarIcon';
 export * from './logo';
+export * from './ThreeDots';
 
 const actionIcons = {
   Reply,

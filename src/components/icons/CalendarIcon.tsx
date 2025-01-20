@@ -5,7 +5,7 @@ export const CalendarIcon = (props: SVGProps<SVGSVGElement>) => {
     <svg
       viewBox="0 0 24 24"
       aria-hidden="true"
-      className="r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-bnwqim r-lrvibr r-a023e6 r-faml9v r-9iso6"
+      className="w-5 h-5 text-gray-500 hover:text-gray-700 cursor-pointer"
       {...props}
     >
       <g>
